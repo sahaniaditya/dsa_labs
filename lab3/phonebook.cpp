@@ -8,7 +8,8 @@ bool isStringPresent(const std::string& mainString, const std::string& subString
 
 long long mod_pow(long long x, long long i, long long m) {
     long long result = 1;
-    x %= m; // Take x modulo m initially to avoid overflow
+    x %= m;
+    // Take x modulo m initially to avoid overflow
     while (i > 0) {
         if (i % 2 == 1) {
             result = (result * x) % m;
