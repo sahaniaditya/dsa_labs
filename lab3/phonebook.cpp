@@ -109,24 +109,36 @@ public:
 
     // Implement methods for adding, deleting, and fetching contacts
 
-    void addContact( PhoneRecord* record) {
+    void addContact(PhoneRecord* record) {
+        //cout << "i am here" << endl;
         string word = "";
         stringstream name;
         name << (record) -> getName();
         while(getline(name,word,' ')){
+            //cout << "i am ready" << endl;
                 int KEY = computeHash(word);
                 HashTableRecord *node = new HashTableRecord(KEY,record);
+                
                 if(hashTable[KEY] == nullptr){
                     hashTable[KEY] = node;
+                    //cout << "1" << endl;
                 }
                 else{
+                    //cout << "else" << endl;
+                    
+                   // cout << "singer" << endl;
+                    //cout << 
+                    //cout << ite -> getRecord() -> getName() << endl;
                     HashTableRecord *ite = hashTable[KEY];
                     while(ite -> getNext() != nullptr){
                         ite = ite -> getNext();
                     }
+                    //cout << "kangaru" << endl;
                     ite -> setNext(node);
+                    //cout << "suraj" << endl;
                 }
-             }  
+             }
+             //cout << "gubbal" << endl;  
         }
     bool deleteContact(const string* searchName) {
         string str  = *searchName;
@@ -226,6 +238,7 @@ public:
     }
 
     void readRecordsFromFile(const string& filename ){
+        //cout << "ball" << endl;
         ifstream inputFile(filename);
         if (!inputFile.is_open()) {
         cerr << "Failed to open file." << endl;
@@ -243,8 +256,11 @@ public:
             for(int i = 1;i<row.size() - 1;i++){
                numbers.push_back(row[i]);
             }
+            //cout << "come here" << endl;
             PhoneRecord *ob = new PhoneRecord(row[0],row[row.size() - 1],numbers);
+            //cout << "cat" << endl;
             addContact(ob);
+            //cout << "dog" << endl;
         }
     }  
     //destructor 

@@ -1,5 +1,5 @@
 Janakpuri West 0,
-Dabri Mor 10,,,,
+Dabri Mor 10,
 Dashrath Puri 20,
 Palam 30,
 Sadar Bazar Cantonment 40,

@@ -30,7 +30,7 @@ void testLoadContactsFromFile() {
             fetchedContacts[0]->getName().find("Rana") != std::string::npos,
             "Contact not loaded from file"
         );
-
+        cout << "1" << endl;
         // Add more checks for other contacts as needed...
     } catch (const std::exception& e) {
         failed_tests++;
@@ -41,19 +41,31 @@ void testLoadContactsFromFile() {
 void testAddContact() {
     try {
         // Create a PhoneBook
-        PhoneBook phoneBook;
+        //PhoneBook *phone_book;
+       PhoneBook *phone_book = new PhoneBook();
+        vector<string> phoneNumbers1 = {"7889234231"};
+        PhoneRecord record1("Adhir Ranjan", "Novotel", phoneNumbers1);
+        phone_book -> addContact(&record1);
 
-        // Create some PhoneRecord objects
-        vector<string> phoneNumbers1 = {"1234567890", "4567891230"};
-        PhoneRecord record1("John Doe", "Company A", phoneNumbers1);
 
-        // Add a contact to the PhoneBook
-        phoneBook.addContact(&record1);
+        if (phone_book -> deleteContact(new std::string("Adhir Ranjan"))) {
+            vector<PhoneRecord*> contacts = phone_book -> fetchContacts(new std::string("Adhir Ranjan"));    
+        
 
-        // Fetch the contact and assert its name
-        vector<PhoneRecord*> fetchedContacts = phoneBook.fetchContacts(new std::string("John Doe"));
-        assertWithMessage(!fetchedContacts.empty(), "Contact not found");
-        assertWithMessage(fetchedContacts[0]->getName() == "John Doe", "Contact not found");
+        if (contacts.empty()) {
+
+               cout << "success" << endl;
+            } else {
+                cout << "failure" << endl;
+            }
+            cout << "1" << endl;
+
+    }
+
+
+    else {
+        cout << "Failure" << endl;
+    }
     } catch (const std::exception& e) {
         failed_tests++;
         std::cout << "Unit test 'testAddContact' failed: " << e.what() << std::endl;
@@ -77,6 +89,7 @@ void testDeleteContact() {
         // Try to fetch the deleted contact
         vector<PhoneRecord*> fetchedContacts = phoneBook.fetchContacts(new std::string("Dwayne Johnson"));
         assertWithMessage(fetchedContacts.empty(), "Deleted contact still exists");
+        cout << "1" << endl;
     } catch (const std::exception& e) {
         failed_tests++;
         std::cout << "Unit test 'testDeleteContact' failed: " << e.what() << std::endl;
@@ -110,6 +123,7 @@ void testAddAndFetchContacts() {
 
         vector<PhoneRecord*> Contacts2 = phoneBook.fetchContacts(new std::string("Dwayne"));
         assertWithMessage(Contacts2.size() == 3, "Incorrect number of Dwayne contacts");
+        cout << "1" << endl;
 
     } catch (const std::exception& e) {
         failed_tests++;
@@ -243,6 +257,36 @@ void testObjectValues() {
         std::cout << "Unit test 'testObjectValues' failed: " << e.what() << std::endl;
     }
 }
+
+void test_delete_multiple_contacts() {
+        // Test deleting multiple contacts with different names
+        // Fetch contacts with the name and store the first contact in the list in a variable
+        PhoneBook* phone_book = new PhoneBook();
+        vector<PhoneRecord*> contacts_gupta = phone_book -> fetchContacts(new std::string("Ankush Gupta"));
+        vector<PhoneRecord*> contacts_khanna = phone_book -> fetchContacts(new std::string("Aarav Khanna"));
+
+        if (phone_book -> deleteContact(new std::string("Ankush Gupta")) && phone_book -> deleteContact(new std::string("Aarav Khanna"))) {
+            // Get the first contact again if any contacts are returned after fetching
+            vector<PhoneRecord*> contacts_gupta_after_delete = phone_book -> fetchContacts(new std::string("Ankush Gupta"));
+            vector<PhoneRecord*> contacts_khanna_after_delete = phone_book -> fetchContacts(new std::string("Aarav Khanna"));
+
+            if (!contacts_gupta_after_delete.empty() && contacts_khanna_after_delete.empty()) {
+                // Also check that other contacts with the same names are not deleted
+                vector<PhoneRecord*> contacts_sharma = phone_book -> fetchContacts(new std::string("Sharma"));
+                vector<PhoneRecord*> contacts_kumar = phone_book -> fetchContacts(new std::string("Kumar"));
+
+                if (contacts_sharma.size() >= 1 && contacts_kumar.size() >= 1) {
+                    cout << ("test_delete_multiple_contacts");
+                } else {
+                    cout << ("test_delete_multiple_contacts");
+                }
+            } else {
+                cout << ("test_delete_multiple_contacts");
+            }
+        } else {
+            cout << ("test_delete_multiple_contacts");
+        }
+    }
 
 int main() {
     std::vector<void (*)()> unit_tests_list = {

@@ -18,4 +18,4 @@ Madi Pur 160,
 Shivaji Park 170,
 Punjabi Bagh 180,
 Ashok Park Main 190,
-Inder Lok 200,
+Inderlok 200

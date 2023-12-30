@@ -1,2 +1,1 @@
-TravelDesk travelDesk;
-    travelDesk.add_trip("XYZ789", 3, "LocationX", "LocationY", 1500);
+cout << "ball" << endl;

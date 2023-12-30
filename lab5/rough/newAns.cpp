@@ -12,7 +12,6 @@ class MetroStop;
 class MetroLine;
 class AVLNode;
 
-//-----------------------------------  MetroStop Class ----------------------------------------------
 // MetroStop class
 class MetroStop {
 private:
@@ -73,7 +72,6 @@ void MetroStop::setPrevStop(MetroStop* prev) {
     prevStop = prev;
 }
 
-//----------------------------------------- MetroLine Class ----------------------------------------
 
 // MetroLine class
 class MetroLine {
@@ -179,7 +177,7 @@ void MetroLine::populateLine(std::string filename) {
     inputFile.close();
 }
 
-// ---------------------------------------------- AVLNode Class ----------------------------------------
+
 // AVLNode class
 class AVLNode {
 private:
@@ -249,7 +247,7 @@ void AVLNode::addMetroStop(MetroStop* metroStop) {
     stops.push_back(metroStop);
 }
 
-//------------------------------------------- AVLTree Class --------------------------------------------
+
 // AVLTree class
 class AVLTree {
     // Define your AVLTree implementation here.
@@ -445,10 +443,10 @@ void AVLTree::populateTree(MetroLine* metroLine) {
     MetroStop* node = metroLine -> getNode();
     // cout << node -> getStopName() << endl;
     //cout << (this -> getRoot() == nullptr) << endl;
-    int c = 0;
+    //int c = 0;
     while(node != nullptr){
         //cout << "here2" << endl;
-    c++;    
+    //c++;    
     //cout << c << endl;
     insert(this -> getRoot(), node);
     //cout << this -> getRoot() -> getStopName() << endl;
@@ -504,8 +502,7 @@ public:
     string getPtr();
     void setPtr(string name);
     Trip* getPrev() const;
-    // void setTrip(Trip* trip);
-    // vector<Trip*> getTrips();
+   
 };
 
 Trip::Trip(MetroStop* metroStop, Trip* previousTrip) {
@@ -528,14 +525,6 @@ Trip* Trip::getPrev() const {
 
 vector<Trip*> trips;
 
-// void Trip::setTrip(Trip* trip){
-//     trips.push_back(trip);
-// }
-
-// vector<Trip*> Trip::getTrips(){
-//     return trips;
-// }
-//--------------------------------------------------- Exploration -------------------------------------
 // Exploration class is a queue that stores unexplored Trip objects
 class Exploration {
 private:
@@ -579,8 +568,6 @@ bool Exploration::isEmpty() const {
     return trips.empty();
 }
 
-
-//------------------------------------------ Path Class -------------------------------------------
 class Path {
 private:
     std::vector<MetroStop*> stops;
@@ -627,7 +614,6 @@ void Path::printPath() const {
     }
 }
 
-//------------------------------------------ PathFinder Class ---------------------------------------
 // PathFinder class
 class PathFinder {
 private:
@@ -701,29 +687,32 @@ bool findStop(Path* path,string stopName){
 
 bool findTrip(MetroStop* stop){
    for(int i  = 0;i < trips.size();i++){
-    if(trips[i] -> getNode() -> getStopName() == stop -> getStopName())
+    if(trips[i] -> getNode() -> getStopName() == stop -> getStopName() 
+    && trips[i] -> getNode() -> getLine() -> getLineName() == stop -> getLine() -> getLineName())
      return true;
    }
    return false;
 }
 
+
 Path* PathFinder::findPath(std::string origin, std::string destination) {
-    //cout << "come entered" << endl;
     AVLTree* root = this -> getTree();
-    //cout << this -> getLines().size() << endl;
-    //AVLNode* stop = root -> searchStop(origin);
     MetroLine* line = searchLine(origin);
-    //cout << (line == nullptr) << endl;
-    //cout << "here2" << endl;
     MetroStop* stop = getStopOnLine(origin,line);
     //cout << "here1" << endl;
     AVLNode* avlNode = root -> searchStop(origin);
+
+    if(avlNode == nullptr)
+     return nullptr;
+    if(root -> searchStop(destination) == nullptr)
+     return nullptr; 
+
     vector<MetroStop*> stops = avlNode -> getStops();
     Exploration* explore = new Exploration();
     for(int i  = 0;i<stops.size();i++){
-        Trip* trip1 = new Trip(stop, nullptr);
+        Trip* trip1 = new Trip(stops[i], nullptr);
         trip1 -> setPtr("prev");
-        Trip* trip2 = new Trip(stop,nullptr);
+        Trip* trip2 = new Trip(stops[i],nullptr);
         trips.push_back(trip1);
         trips.push_back(trip2);
         trip2 -> setPtr("next");
@@ -744,11 +733,12 @@ Path* PathFinder::findPath(std::string origin, std::string destination) {
          //MetroStop* backNode = currTrip -> getNode();
          //cout << "entered3" << endl;
 
-
-         while(forNode != nullptr){
+      outerLoop:  
+      while(forNode != nullptr){
             //cout << "i am here" << endl;
             //when destination is found
              if(forNode -> getStopName() == destination){
+                //cout << "kirmada2" << endl;
                 MetroStop* travNode = getStopOnLine(forNode -> getStopName(),forNode -> getLine());
                 int fareNode = travNode -> getLine() -> getNode() -> getFare();
                 Path* path = new Path();
@@ -763,163 +753,67 @@ Path* PathFinder::findPath(std::string origin, std::string destination) {
                     travNode = getStopOnLine(travNode -> getStopName(),currTrip -> getNode() -> getLine());
                     MetroStop* node1 = currTrip -> getNode();
                     path -> setTotalFare(path -> getTotalFare() + abs(travNode -> getFare() - node1 -> getFare()));
+                     //cout << "kirmada" << endl;
                      while(travNode != node1){
                         if(findStop(path,travNode -> getStopName()) == false)
                          path -> addStop(travNode);
+                         //cout << travNode -> getStopName() << " ";
                          //path -> setTotalFare(path -> getTotalFare() + abs(travNode -> getFare() - fareNode));
                         if(flagInner)
                          travNode = travNode -> getNextStop();
                         else 
                          travNode = travNode -> getPrevStop(); 
                      }
+                     //cout << endl;
                      path -> addStop(travNode);
                      //path -> setTotalFare(path -> getTotalFare() + abs(travNode -> getFare() - fareNode));
                      currTrip = currTrip -> getPrev();
                  }
+                // paths.push_back(path);
+                // cout << path -> getStops().size() << " ";
+                // break;
                 return path;
-             }
+                
+              }
 
              //if stop is a junction
 
              AVLNode* junStop = root -> searchStop(forNode -> getStopName());
              vector<MetroStop*> juncVec = junStop -> getStops();
+
+             //if(findTrip(juncVec[0]) != true){
+             //cout << "Juncvec : " << juncVec.size() << " " << juncVec[0] -> getStopName() << endl;   
              if(juncVec.size() >  1){
              for(int i  = 0;i<juncVec.size();i++){
                 if(findTrip(juncVec[i]) == false){
-                if(juncVec[i] -> getLine() != forNode -> getLine()){
-                  
-                Trip* juncTrip1 = new Trip(juncVec[i],currTrip);
-                 juncTrip1 -> setPtr("prev");
-                Trip* juncTrip2 = new Trip(juncVec[i],currTrip);
-                juncTrip2 -> setPtr("next");
-                explore -> enqueue(juncTrip1);
-                explore -> enqueue(juncTrip2);
-                
-                 }
+                   if(juncVec[i] -> getLine() -> getLineName() != forNode -> getLine() -> getLineName()){
+                      
+                      Trip* juncTrip1 = new Trip(juncVec[i],currTrip);
+                       juncTrip1 -> setPtr("prev");
+                      Trip* juncTrip2 = new Trip(juncVec[i],currTrip);
+                      juncTrip2 -> setPtr("next");
+                      trips.push_back(juncTrip1);
+                      trips.push_back(juncTrip2);
+                      explore -> enqueue(juncTrip1);
+                      explore -> enqueue(juncTrip2);
+                   
+                    }
                 }
-
 
                }
 
             }
-
+             //cout << forNode -> getStopName() << " ";
              if(flag)
               forNode = forNode -> getNextStop();
              else
               forNode = forNode -> getPrevStop();
          }
 
-        //cout << "entered4" << endl; 
-        //   while(backNode != nullptr){
-        //     cout << "i am here2" << endl;
-        //      if(backNode -> getStopName() == destination){
-        //         MetroStop* travNode = getStopOnLine(backNode -> getStopName(),backNode -> getLine());
-        //         int fareNode = travNode -> getLine() -> getNode() -> getFare();
-        //         Path* path = new Path();
-        //         cout << "entered5" << endl;
-        //         int c = 0;
-        //         while(currTrip  != nullptr){
-        //             cout << "entered6" << endl;
-        //             cout << "|" << currTrip -> getNode() -> getLine() -> getLineName() << endl;
-        //             travNode = getStopOnLine(travNode -> getStopName(),currTrip -> getNode() -> getLine());
-        //             MetroStop* node1 = currTrip -> getNode();
-        //              while(travNode != node1){
-        //                 path -> addStop(travNode);
-        //                 path -> setTotalFare(path -> getTotalFare() + abs(travNode -> getFare() - fareNode));
-        //                 cout << travNode -> getStopName() << endl;
-        //                 if(c == 0)
-        //                  travNode = travNode -> getNextStop();
-        //                 else
-        //                  travNode = travNode -> getPrevStop();
-                         
-        //                 //cout << "loop" << endl;
-        //              }
-        //              c++;
-        //              cout << "trav:" << travNode -> getStopName() << endl;
-        //              path -> addStop(travNode);
-        //              path -> setTotalFare(path -> getTotalFare() + abs(travNode -> getFare() - fareNode));
-        //              currTrip = currTrip -> getPrev();
-                     
-        //          }
-        //          cout << "good" << endl;
-        //          return path;
-        //      }
-
-
-        //      AVLNode* junStop = root -> searchStop(backNode -> getStopName());
-        //      vector<MetroStop*> juncVec = junStop -> getStops();
-        //       if(juncVec.size() >  1){
-        //      for(int i  = 0;i<juncVec.size();i++){
-        //         if(juncVec[i] -> getLine() != backNode -> getLine()){
-        //         Trip* juncTrip = new Trip(juncVec[i],currTrip);
-        //         explore -> enqueue(juncTrip);
-        //         }
-        //      }
-        //      }
-        //      backNode = backNode -> getPrevStop();
-        //  }
-       
-
     }
-    //cout << "count on you" << endl;
+    
     return nullptr;
 
 }
 
-
-
-
-
-
-// int main(){
-//     MetroLine ob("green");
-//     ob.populateLine("green.txt");
-//     MetroLine ob1("orange");
-//     ob1.populateLine("orange.txt");
-//     MetroLine ob2("magenta");
-//     ob2.populateLine("magenta.txt");
-//     MetroLine ob3("violet");
-//     ob3.populateLine("violet.txt");
-//     MetroLine ob4("blue");
-//     ob4.populateLine("blue.txt");
-//     MetroLine ob5("yellow");
-//     ob5.populateLine("yellow.txt");
-//     MetroLine ob6("red");
-//     ob6.populateLine("red.txt");
-//     MetroStop* node = ob.getNode();
-//     AVLTree tree;
-//     tree.setRoot(nullptr);
-//     lines.push_back(&ob);
-//     lines.push_back(&ob1);
-//     lines.push_back(&ob2);
-//     lines.push_back(&ob3);
-//     lines.push_back(&ob4);
-//     lines.push_back(&ob5);
-//     lines.push_back(&ob6);
-//     cout << "come" << endl;
-//     testFindPath();
-//     //cout << "here2" << endl;
-//     //tree.populateTree(&ob);
-//     //tree.inOrderTraversal(tree.getRoot());
-//     //cout << tree.getRoot() -> getStopName();
-//     //cout << tree.getTotalNodes(tree.getRoot()) << endl;
-//     //tree.populateTree(&ob1);
-//     //cout << tree.getTotalNodes(tree.getRoot()) << endl;
-//     //tree.populateTree(&ob2);
-//     // cout << tree.getTotalNodes(tree.getRoot()) << endl;
-//     //tree.populateTree(&ob3);
-//     // cout << tree.getTotalNodes(tree.getRoot()) << endl;
-//     //tree.populateTree(&ob4);
-//     // cout << tree.getTotalNodes(tree.getRoot()) << endl;
-//     //tree.populateTree(&ob5);
-//     // cout << tree.getTotalNodes(tree.getRoot()) << endl;
-//     //tree.populateTree(&ob6);
-//     // cout << tree.getTotalNodes(tree.getRoot()) << endl;
-//     //cout << "comeon" <<endl;
-//     //cout << tree.getTotalNodes(tree.getRoot()) << endl;
-//     //cout << tree.height(tree.getRoot()) << endl;
-//     //tree.inOrderTraversal(tree.getRoot());
-//     //cout << isBalanced(tree.getRoot()) << endl;
-//     //cout << tree.getRoot() -> getStopName() << endl;
-//     return 0;
-// }
+vector<MetroLine*> lines;

@@ -1,0 +1,496 @@
+about
+Chapter1 2
+after
+Chapter1 1
+Chapter2 1
+all
+Chapter1 1
+Chapter2 1
+always
+Chapter1 1
+amazed
+Chapter1 1
+ancient
+Chapter3 1
+angel
+Chapter2 1
+any
+Chapter3 1
+anyone
+Chapter1 2
+Chapter2 1
+arms
+Chapter3 1
+arrived
+Chapter3 1
+art
+Chapter3 1
+as
+Chapter2 3
+Chapter3 1
+at
+Chapter1 1
+awe
+Chapter1 1
+beautiful
+Chapter1 2
+became
+Chapter2 1
+Chapter3 1
+before
+Chapter1 1
+began
+Chapter2 1
+believe
+Chapter1 1
+believed
+Chapter3 1
+best
+Chapter1 1
+boy
+Chapter1 1
+brought
+Chapter2 2
+but
+Chapter3 1
+by
+Chapter1 1
+care
+Chapter2 1
+cave
+Chapter1 8
+clara
+Chapter2 6
+closed
+Chapter2 1
+coins
+Chapter1 1
+collecting
+Chapter1 1
+color
+Chapter2 1
+colorful
+Chapter1 1
+comfort
+Chapter2 1
+community
+Chapter3 1
+continued
+Chapter2 1
+could
+Chapter2 2
+Chapter3 1
+couldn't
+Chapter1 1
+countless
+Chapter2 1
+crystals
+Chapter1 4
+curious
+Chapter1 1
+days
+Chapter2 1
+decided
+Chapter1 2
+Chapter3 1
+deep
+Chapter3 1
+didn't
+Chapter1 1
+discovery
+Chapter1 1
+do
+Chapter1 1
+else
+Chapter1 2
+emily
+Chapter2 3
+emily's
+Chapter2 3
+entered
+Chapter1 1
+entire
+Chapter1 1
+every
+Chapter1 1
+examined
+Chapter2 1
+exciting
+Chapter1 1
+explore
+Chapter1 1
+exploring
+Chapter1 1
+eyes
+Chapter1 1
+Chapter2 1
+fame
+Chapter2 1
+far
+Chapter2 1
+fell
+Chapter2 1
+felt
+Chapter1 1
+fever
+Chapter2 2
+few
+Chapter2 1
+filled
+Chapter1 1
+find
+Chapter1 1
+for
+Chapter1 1
+Chapter2 3
+forehead
+Chapter2 1
+forest
+Chapter1 1
+Chapter3 1
+forever
+Chapter1 1
+Chapter3 1
+friend
+Chapter1 1
+from
+Chapter3 1
+garden
+Chapter2 1
+gazing
+Chapter1 1
+gift
+Chapter2 1
+girl
+Chapter2 1
+glow
+Chapter1 1
+good
+Chapter2 1
+grateful
+Chapter2 1
+grew
+Chapter3 1
+guardian
+Chapter2 1
+had
+Chapter1 2
+Chapter2 4
+hand
+Chapter2 2
+happiness
+Chapter2 1
+harmony
+Chapter3 1
+he
+Chapter1 17
+Chapter3 4
+heal
+Chapter2 1
+Chapter3 1
+healing
+Chapter2 1
+help
+Chapter2 2
+helped
+Chapter2 1
+helping
+Chapter2 1
+her
+Chapter1 1
+Chapter2 17
+herbal
+Chapter3 1
+hidden
+Chapter1 1
+Chapter3 1
+high
+Chapter2 1
+him
+Chapter3 2
+his
+Chapter1 6
+Chapter3 1
+home
+Chapter3 2
+hope
+Chapter2 1
+hours
+Chapter1 3
+house
+Chapter1 1
+ill
+Chapter2 1
+illness
+Chapter2 1
+illnesses
+Chapter2 1
+inside
+Chapter1 2
+it
+Chapter1 5
+Chapter3 2
+its
+Chapter3 1
+keep
+Chapter1 2
+kindness
+Chapter2 1
+Chapter3 1
+knew
+Chapter2 2
+know
+Chapter1 1
+knowledge
+Chapter2 1
+known
+Chapter2 2
+laughing
+Chapter1 1
+learned
+Chapter3 1
+like
+Chapter1 2
+lily
+Chapter1 2
+lit
+Chapter1 1
+long
+Chapter2 1
+looking
+Chapter1 1
+love
+Chapter3 1
+magic
+Chapter3 1
+magical
+Chapter1 1
+make
+Chapter3 1
+man
+Chapter3 1
+moments
+Chapter2 1
+name
+Chapter1 1
+named
+Chapter2 2
+nature
+Chapter3 1
+near
+Chapter1 1
+never
+Chapter1 1
+not
+Chapter1 1
+offered
+Chapter3 1
+old
+Chapter2 1
+on
+Chapter2 1
+open
+Chapter3 1
+overcome
+Chapter2 1
+overjoyed
+Chapter2 1
+own
+Chapter1 1
+parents
+Chapter2 2
+part
+Chapter3 1
+passed
+Chapter3 1
+past
+Chapter3 1
+people
+Chapter2 3
+Chapter3 3
+place
+Chapter3 2
+placed
+Chapter2 1
+potion-making
+Chapter3 1
+power
+Chapter3 1
+problems
+Chapter2 1
+profusely
+Chapter2 1
+promised
+Chapter1 1
+protect
+Chapter3 1
+quaint
+Chapter2 1
+remedies
+Chapter3 1
+remember
+Chapter2 1
+returned
+Chapter2 1
+rocks
+Chapter1 1
+rush
+Chapter1 1
+saw
+Chapter1 1
+school
+Chapter1 1
+seasons
+Chapter3 1
+secret
+Chapter1 3
+seen
+Chapter1 1
+serious
+Chapter2 1
+she
+Chapter2 10
+shiny
+Chapter1 1
+show
+Chapter1 1
+sick
+Chapter3 1
+simply
+Chapter2 1
+skilled
+Chapter3 1
+small
+Chapter1 1
+Chapter3 1
+smiled
+Chapter2 1
+some
+Chapter1 1
+something
+Chapter1 1
+soon
+Chapter3 1
+soothing
+Chapter2 1
+sorts
+Chapter1 1
+sparkling
+Chapter1 1
+special
+Chapter2 1
+spend
+Chapter1 1
+spent
+Chapter1 2
+Chapter2 1
+spread
+Chapter2 1
+stay
+Chapter3 1
+stranger
+Chapter3 1
+stumbled
+Chapter1 1
+subside
+Chapter2 1
+take
+Chapter2 1
+talking
+Chapter1 1
+tell
+Chapter1 1
+tending
+Chapter2 1
+thanked
+Chapter2 1
+that
+Chapter1 1
+Chapter2 1
+them
+Chapter2 1
+then
+Chapter2 1
+threats
+Chapter3 1
+thrived
+Chapter3 1
+tim
+Chapter1 1
+together
+Chapter1 1
+Chapter3 1
+told
+Chapter2 1
+took
+Chapter2 1
+touch
+Chapter2 2
+town
+Chapter1 1
+treasures
+Chapter1 1
+troubled
+Chapter3 1
+troubles
+Chapter2 1
+trusted
+Chapter1 1
+up
+Chapter1 1
+village
+Chapter2 4
+Chapter3 4
+village's
+Chapter2 1
+villagers
+Chapter2 1
+Chapter3 1
+wandering
+Chapter1 1
+want
+Chapter1 1
+ways
+Chapter3 1
+welcomed
+Chapter3 1
+went
+Chapter1 1
+were
+Chapter2 2
+Chapter3 1
+what
+Chapter1 1
+where
+Chapter3 1
+while
+Chapter1 1
+whispered
+Chapter2 1
+who
+Chapter2 1
+wide
+Chapter2 1
+wisdom
+Chapter2 1
+wise
+Chapter2 1
+woman
+Chapter2 1
+wonder
+Chapter3 1
+woods
+Chapter1 1
+words
+Chapter2 2
+worked
+Chapter3 1
+world
+Chapter1 1
+worried
+Chapter2 1
+would
+Chapter1 2
+young
+Chapter2 1
+Chapter3 1
